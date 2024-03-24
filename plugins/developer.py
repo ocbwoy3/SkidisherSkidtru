@@ -1,8 +1,11 @@
+from email import message
+from pydoc import text
 from api.registrate import CommandRegistrate
 import discord
 from discord import app_commands, Interaction
 
 from api.view import BaseView
+import api.permissions as perms
 
 import uuid
 
@@ -11,6 +14,14 @@ __author__ = "OCbwoy3"
 
 class Main:
 	def __init__(self,registrate:CommandRegistrate):
+
+		@app_commands.command(name='say',description='Make Skidisher Skidtru say anything you desire!')
+		@app_commands.check(perms.is_ocbwoy3)
+		@app_commands.describe(text='Text to send.')
+		async def say_anything(interaction:Interaction,text:str):
+			await interaction.response.send_message(text)
+
+		registrate.misc.add_command(say_anything)
 
 		@app_commands.command(name='prikolshub',description='Spawn a fake PrikolsHub session request.')
 		async def prikolshub_session_request(interaction:Interaction):

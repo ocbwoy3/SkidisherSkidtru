@@ -26,9 +26,9 @@ class PluginLoader:
 
 		if MainClass != None:
 			self.allPlugins.append([module_path,PluginName,CreatorName])
-			print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Loading \033[2;36m\033[1;36m{PluginName}\033[0m\033[2;36m\033[0m")
+			#print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Loading \033[2;36m\033[1;36m{PluginName}\033[0m\033[2;36m\033[0m")
 			MainClass(self.registrate)
-			print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Successfully loaded \033[2;36m\033[1;36m{PluginName}\033[0m\033[2;36m\033[0m by \033[2;36m\033[1;36m{CreatorName}\033[0m\033[2;36m\033[0m")
+			#print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Successfully loaded \033[2;36m\033[1;36m{PluginName}\033[0m\033[2;36m\033[0m by \033[2;36m\033[1;36m{CreatorName}\033[0m\033[2;36m\033[0m")
 		else:
 			pass # print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Skipped loading '{module_path}'")
 
@@ -42,7 +42,7 @@ class PluginLoader:
 					print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m ({module_path}) {error.__class__.__name__}: {error}")
 					print("".join(traceback.format_exception(type(error), error, error.__traceback__)),file=sys.stderr)
 
-		print("\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Plugin Loading finished.")
-		print("\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Currently loaded plugins:")
-		for plugin in self.allPlugins:
-			print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m {plugin[1]} by {plugin[2]} ({plugin[0]})")
+		# print("\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Plugin Loading finished.")
+		# print("\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m Currently loaded plugins:")
+		# for plugin in self.allPlugins:
+		# 	print(f"\033[2;34m\033[1;34m[Plugin]\033[0m\033[2;34m\033[0m {plugin[1]} by {plugin[2]} ({plugin[0]})")

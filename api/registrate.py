@@ -10,4 +10,6 @@ class CommandRegistrate:
 	misc = app_commands.Group(name='misc',description='Extra Commands',allowed_contexts=AppCommandContext.all(),allowed_installs=AppInstallationType.all())
 	ocbwoy3 = app_commands.Group(name='ocbwoy3',description='Spy on OCbwoy3',allowed_contexts=AppCommandContext.all(),allowed_installs=AppInstallationType.all())
 	nexus = app_commands.Group(name='nexus',description='Nexus lookup commands',allowed_contexts=AppCommandContext.all(),allowed_installs=AppInstallationType.all())
+	prikolshub = app_commands.Group(name='prikolshub',description='Fun',allowed_contexts=AppCommandContext.all(),allowed_installs=AppInstallationType.all())
+
 	

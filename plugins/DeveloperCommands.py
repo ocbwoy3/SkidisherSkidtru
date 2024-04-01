@@ -1,5 +1,3 @@
-from email import message
-from pydoc import text
 from api.registrate import CommandRegistrate
 import discord
 from discord import app_commands, Interaction

@@ -15,14 +15,18 @@ __author__ = "OCbwoy3"
 import functools, requests, asyncio
 from requests import Response
 
+import cfscrape
+
 async def get(*args, **kwargs) -> Response:
-	realfunc = functools.partial(requests.get, *args, **kwargs)
+	scraper = cfscrape.create_scraper()
+	realfunc = functools.partial(scraper.get, *args, **kwargs)
 	loop = asyncio.get_running_loop()
 	response = await loop.run_in_executor(None,realfunc)
 	return response
 
 async def post(*args, **kwargs) -> Response:
-	realfunc = functools.partial(requests.post, *args, **kwargs)
+	scraper = cfscrape.create_scraper()
+	realfunc = functools.partial(scraper.post, *args, **kwargs)
 	loop = asyncio.get_running_loop()
 	response = await loop.run_in_executor(None,realfunc)
 	return response

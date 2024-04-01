@@ -1,4 +1,3 @@
-from pyautogui import FailSafeException
 from api.registrate import CommandRegistrate
 import discord, pylast, os
 from discord import app_commands, Interaction

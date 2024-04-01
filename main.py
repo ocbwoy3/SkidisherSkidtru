@@ -69,6 +69,7 @@ async def on_ready():
 	tree.add_command(registrate.fun)
 	tree.add_command(registrate.misc)
 	tree.add_command(registrate.ocbwoy3)
+	tree.add_command(registrate.nexus)
 	print("Syncing CommandTree")
 	await tree.sync()
 	print("Successfully loaded!")

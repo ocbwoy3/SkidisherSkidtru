@@ -1,3 +1,4 @@
+from pyautogui import FailSafeException
 from api.registrate import CommandRegistrate
 import discord, pylast, os
 from discord import app_commands, Interaction
@@ -27,17 +28,19 @@ class Main:
 		async def get_music(interaction:Interaction):
 			await interaction.response.defer(ephemeral=False,thinking=True)
 
+			isPlaying = True
 			nowplaying = authed.get_now_playing()
-
 			if nowplaying == None:
-				await interaction.followup.send("No music currently playing.")
-				return
-
-			link = nowplaying.get_url()
+				isPlaying = False
+				ls: pylast.PlayedTrack = authed.get_recent_tracks(limit=1)[0]
+				sn = ls.track
+				nowplaying = sn
+				
 			artwork = nowplaying.get_cover_image(pylast.SIZE_MEDIUM)
 			title = nowplaying.get_title(properly_capitalized=True)
 			artist = nowplaying.get_artist().get_name()
 			album = nowplaying.get_album().get_name()
+			link = nowplaying.get_url()
 
 			embed = discord.Embed(color=discord.Colour.red(),title=f"{title}",url=link)
 			embed.add_field(name="Title",value=f"{title}",inline=False)
@@ -45,6 +48,9 @@ class Main:
 			embed.add_field(name="Album",value=f"{album}",inline=False)
 			embed.set_footer(text="Music API data from last.fm")
 			embed.set_thumbnail(url=artwork)
+
+			if isPlaying == False:
+				embed.description = "**(LAST SONG LISTENED TO)**"
 
 			view = BaseView(user=None,timeout=None)
 			link = discord.ui.Button[BaseView](label="View on last.fm",style=discord.ButtonStyle.link,url=f"{link or 'https://google.com/search?q=error'}")

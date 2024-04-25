@@ -30,7 +30,16 @@ async def on_tree_error(interaction: Interaction, error: AppCommandError) -> Non
 	#	except:
 	#		pass
 	#	return
-	if 'ocbwoy3 only' in str(error):
+	if isinstance(error, app_commands.CommandOnCooldown):
+		try:
+			await interaction.response.send_message(str(error),ephemeral=True)
+		except Exception as ex:
+			try:
+				await interaction.followup.send(str(error),ephemeral=True)
+			except:
+				pass
+		return
+	elif 'ocbwoy3 only' in str(error):
 		try:
 			await interaction.response.send_message("You are not OCbwoy3!",ephemeral=True)
 		except Exception as ex:
@@ -38,6 +47,7 @@ async def on_tree_error(interaction: Interaction, error: AppCommandError) -> Non
 				await interaction.followup.send("You are not OCbwoy3!",ephemeral=True)
 			except:
 				pass
+		return
 	elif 'wl only' in str(error):
 		try:
 			await interaction.response.send_message("You are not whitelisted!",ephemeral=True)
@@ -46,6 +56,7 @@ async def on_tree_error(interaction: Interaction, error: AppCommandError) -> Non
 				await interaction.followup.send("You are not whitelisted!",ephemeral=True)
 			except:
 				pass
+		return
 	else:
 		print(f'Ignoring exception in command {interaction.command.name}:', file=sys.stderr)
 		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)

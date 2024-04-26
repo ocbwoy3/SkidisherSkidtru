@@ -48,7 +48,6 @@ def setup_errorhandlers(tree: CommandTree):
 > Python {platform.python_version()} ({platform.python_implementation()})
 > Working Directory: `{os.getcwd()}`
 > Python Executable: `{sys.executable}`
-> Current file: `{__file__}`
 > Process PID: {os.getpid()}"""
 			message = f"""# Skidisher Skidtru has encountered an Exception.
 If this occours again, please create an [issue](<https://github.com/ocbwoy3/SkidisherSkidtru/issues>).

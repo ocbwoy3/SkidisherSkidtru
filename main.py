@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import dotenv, os, traceback, sys
+import dotenv, os, traceback, sys, pathlib
 dotenv.load_dotenv()
 
 old_printfunc = print
@@ -51,8 +51,13 @@ def run_skidisherskidtru():
 
 <b>Written by \033]8;;https://twitter.com/ocbwoy3\033\\OCbwoy3\033]8;;\033\\ and contributors<x>
 """.replace('<r>','\x1B[1;31m').replace('<y>','\033[1;33m').replace('<x>','\033[0m').replace('<b>','\033[34m'))
+	
+	os.chdir(__file__[:-8])
+	
 	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services. For more info, please run the about command.')
 	print("Loading Skidisher Skidtru")
+
+
 	bot.run(os.getenv('DISCORD_TOKEN'))
 
 if __name__ == "__main__":

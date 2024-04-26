@@ -57,7 +57,6 @@ def run_skidisherskidtru():
 	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services. For more info, please run the about command.')
 	print("Loading Skidisher Skidtru")
 
-
 	bot.run(os.getenv('DISCORD_TOKEN'))
 
 if __name__ == "__main__":

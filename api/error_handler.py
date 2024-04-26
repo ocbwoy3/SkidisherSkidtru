@@ -2,6 +2,12 @@ import discord, os, sys, traceback
 from discord import Interaction, app_commands
 from discord.app_commands import AppCommandError, CommandTree
 
+try:
+	import distro
+except Exception:
+	os.system(f"{sys.executable} -m pip install distro")
+	import distro
+
 def setup_errorhandlers(tree: CommandTree):
 	@tree.error
 	async def on_tree_error(interaction: Interaction, error: AppCommandError) -> None:
@@ -37,11 +43,15 @@ def setup_errorhandlers(tree: CommandTree):
 			tb = "".join(traceback.format_exception(type(error), error, error.__traceback__))
 			print(f'Ignoring exception in command {interaction.command.name}:\n{tb}', file=sys.stderr)
 			import platform
-			windows_version = sys.getwindowsversion()
+			windows_version = None
+			if sys.platform == "win32":
+				windows_version = sys.getwindowsversion()
+			islinux = sys.platform == "linux"
 			m2 = f"""**Skidisher Skidtru**
 {
-	sys.platform == "win32" and
-	f"> OS: Windows {windows_version.major}.{windows_version.minor} (OS Build {windows_version.build})"
+	(sys.platform == "win32" and
+	f"> OS: Windows {windows_version.major}.{windows_version.minor} (OS Build {windows_version.build})")
+	or (islinux == True and f"> Linux Distribution: {distro.name(pretty=True)}" or "")
 	or f"> OS: {platform.system()} {platform.release()}"
 }
 > OS platform: {sys.platform}

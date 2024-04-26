@@ -57,10 +57,10 @@ class Main:
 			isBanned = False
 			if b_112.get(f'{user.id}',None) != None:
 				isBanned = True
-				embed.add_field(name="112 (PrikolsHub):",value = b_112.get(f'{user.id}','skidisher skidtru dummy ban reason'))
+				embed.add_field(name="112 (PrikolsHub):",value = b_112.get(f'{user.id}','skidisher skidtru dummy ban reason'),inline=False)
 			if b_nexus.get(f'{user.id}',None) != None:
 				isBanned = True
-				embed.add_field(name="Nexus:",value = b_nexus.get(f'{user.id}').get('reason','skidisher skidtru dummy ban reason'))
+				embed.add_field(name="Nexus:",value = b_nexus.get(f'{user.id}').get('reason','skidisher skidtru dummy ban reason'),inline=False)
 				link2 = discord.ui.Button[BaseView](label="View on Nexus Bans",style=discord.ButtonStyle.link,url=f"https://nexusbans.scriptlang.com")
 				view.add_item(link2)
 

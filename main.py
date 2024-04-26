@@ -22,53 +22,8 @@ tree = app_commands.CommandTree(bot)
 registrate = CommandRegistrate(tree,bot)
 loader = PluginLoader(registrate)
 
-@tree.error
-async def on_tree_error(interaction: Interaction, error: AppCommandError) -> None:
-	#if isinstance(error, app_commands.CheckFailure):
-	#	try:
-	#		await interaction.response.send_message("Unable to run this command.",ephemeral=True)
-	#	except:
-	#		pass
-	#	return
-	if isinstance(error, app_commands.CommandOnCooldown):
-		try:
-			await interaction.response.send_message(str(error),ephemeral=True)
-		except Exception as ex:
-			try:
-				await interaction.followup.send(str(error),ephemeral=True)
-			except:
-				pass
-		return
-	elif 'ocbwoy3 only' in str(error):
-		try:
-			await interaction.response.send_message("You are not OCbwoy3!",ephemeral=True)
-		except Exception as ex:
-			try:
-				await interaction.followup.send("You are not OCbwoy3!",ephemeral=True)
-			except:
-				pass
-		return
-	elif 'wl only' in str(error):
-		try:
-			await interaction.response.send_message("You are not whitelisted!",ephemeral=True)
-		except Exception as ex:
-			try:
-				await interaction.followup.send("You are not whitelisted!",ephemeral=True)
-			except:
-				pass
-		return
-	else:
-		print(f'Ignoring exception in command {interaction.command.name}:', file=sys.stderr)
-		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-		tb = "".join(traceback.format_exception(type(error), error, error.__traceback__))
-		message = f"An error occurred while processing the slash command interaction for '{str(interaction.command.name)}':\n```py\n{tb}\n```"
-		try:
-			await interaction.response.send_message(message,ephemeral=True)
-		except Exception as ex:
-			try:
-				await interaction.followup.send(message,ephemeral=True)
-			except:
-				pass
+from api.error_handler import setup_errorhandlers
+setup_errorhandlers(tree)	
 
 @bot.event
 async def on_ready():
@@ -85,5 +40,20 @@ async def on_ready():
 	await tree.sync()
 	print("Successfully loaded!")
 
-if __name__ == "__main__":
+def run_skidisherskidtru():
+	# \033]8;;https://discord.gg/F8GwJBVVMU\033\\Discord Server\033]8;;\033\\
+	old_printfunc(f"""
+<r> ____  _    _     _ _     _               <x><y> ____  _    _     _ _              <x>
+<r>/ ___|| | _(_) __| (_)___| |__   ___ _ __ <x><y>/ ___|| | _(_) __| | |_ _ __ _   _ <x>
+<r>\___ \| |/ | |/ _` | / __| '_ \ / _ | '__|<x><y>\___ \| |/ | |/ _` | __| '__| | | |<x>
+<r> ___) |   <| | (_| | \__ | | | |  __| |   <x><y> ___) |   <| | (_| | |_| |  | |_| |<x>
+<r>|____/|_|\_|_|\__,_|_|___|_| |_|\___|_|   <x><y>|____/|_|\_|_|\__,_|\__|_|   \__,_|<x>
+
+<b>Written by \033]8;;https://twitter.com/ocbwoy3\033\\OCbwoy3\033]8;;\033\\ and contributors<x>
+""".replace('<r>','\x1B[1;31m').replace('<y>','\033[1;33m').replace('<x>','\033[0m').replace('<b>','\033[34m'))
+	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services. For more info, please run the about command.')
+	print("Loading Skidisher Skidtru")
 	bot.run(os.getenv('DISCORD_TOKEN'))
+
+if __name__ == "__main__":
+	run_skidisherskidtru()

@@ -46,7 +46,8 @@ def dependency_check_auto():
 		exit(1)
 	else:
 		print("Discord package supports user apps")
-	install_package_if_not_present("dotenv")
+	install_package_if_not_present("python-dotenv","dotenv")
+	install_package_if_not_present("cfscrape")
 	install_package_if_not_present("distro")
 	install_package_if_not_present("roblox")
 	install_package_if_not_present("uwuipy")

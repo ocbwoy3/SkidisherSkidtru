@@ -11,7 +11,6 @@ import traceback
 import discord
 from discord.ui.select import BaseSelect
 
-
 class BaseView(discord.ui.View):
 	interaction: discord.Interaction | None = None
 	message: discord.Message | None = None
@@ -59,14 +58,14 @@ class BaseView(discord.ui.View):
 				await self.interaction.edit_original_response(**kwargs)
 
 	async def on_error(self, interaction: discord.Interaction, error: Exception, item: discord.ui.Item[BaseView]) -> None:
-		tb = "".join(traceback.format_exception(type(error), error, error.__traceback__))
-		message = f"An error occurred while processing the interaction for {str(item)}:\n```py\n{tb}\n```"
 		# disable all components
 		self._disable_all()
 		# edit the message with the error message
-		await self._edit(content=message, view=self)
+		await self._edit(view=self)
 		# stop the view
 		self.stop()
+		import api.error_handler as eh
+		await eh.on_view_error(self,interaction,error,item)
 
 	async def on_timeout(self) -> None:
 		# disable all components

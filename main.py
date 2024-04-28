@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 
-import dotenv, os, traceback, sys, pathlib
-dotenv.load_dotenv()
+import os, traceback, sys, pathlib
+os.chdir(__file__[:-8])
+
+from api.dependency_check import dependency_check_auto
+dependency_check_auto()
 
 old_printfunc = print
 
 def print(*args,namespace:str="SkidisherSkidtru",**kwargs):
 	old_printfunc(f"\033[2;34m\033[1;34m[{namespace}]\033[0m\033[2;34m\033[0m",*args,**kwargs)
+
+import dotenv
+dotenv.load_dotenv()
 
 import discord
 from discord import app_commands, Interaction
@@ -32,13 +38,14 @@ async def on_ready():
 	print("Loading plugins")
 	loader.LoadPlugins()
 	print("Finished loading plugins")
+	print("Registering Command Groups from Registrate")
 	tree.add_command(registrate.fun)
 	tree.add_command(registrate.misc)
 	tree.add_command(registrate.ocbwoy3)
 	tree.add_command(registrate.nexus)
-	print("Syncing CommandTree")
+	print("Syncing Command Tree")
 	await tree.sync()
-	print("Successfully loaded!")
+	print("Skidisher Skidtru has successfully loaded!")
 
 def run_skidisherskidtru():
 	# \033]8;;https://discord.gg/F8GwJBVVMU\033\\Discord Server\033]8;;\033\\
@@ -52,12 +59,26 @@ def run_skidisherskidtru():
 <b>Written by \033]8;;https://twitter.com/ocbwoy3\033\\OCbwoy3\033]8;;\033\\ and contributors<x>
 """.replace('<r>','\x1B[1;31m').replace('<y>','\033[1;33m').replace('<x>','\033[0m').replace('<b>','\033[34m'))
 	
-	os.chdir(__file__[:-8])
+	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services like SecLoad and Nexus\'s Manager. For more info, please run the about command.')
 	
-	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services. For more info, please run the about command.')
-	print("Loading Skidisher Skidtru")
+	import api.util as util
 
-	bot.run(os.getenv('DISCORD_TOKEN'))
+	util.check_terms()	
+	
+	print("Logging into Discord")
+
+	try:
+		bot.run(os.getenv('DISCORD_TOKEN'))
+	except discord.errors.PrivilegedIntentsRequired:
+		print("Skidisher Skidtru cannot access privileged intents required.")
+		print("Please visit the Discord developer portal and enable privileged intents.")
+	except discord.errors.LoginFailure as ex:
+		print("Skidisher Skidtru was unable to log into Discord, this might have happened because you inputted an invalid token.")
+		print(f"Exception: {ex}")
+	except Exception as error:
+		import traceback
+		print("Skidisher Skidtru encountered an Exception.")
+		traceback.print_exception(type(error), error, error.__traceback__,file=sys.stderr)
 
 if __name__ == "__main__":
 	run_skidisherskidtru()

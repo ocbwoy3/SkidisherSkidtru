@@ -25,11 +25,18 @@ class Main:
 		async def prikolshub_session_request(interaction:Interaction):
 			await interaction.response.defer(ephemeral=False,thinking=True)
 			
-			view = BaseView(user=None,timeout=None)
+			view = BaseView(user=None,timeout=60)
 
-			accept = discord.ui.Button[BaseView](label='Accept',emoji='✅',style=discord.ButtonStyle.success,custom_id='accept',disabled=True)
-			decline = discord.ui.Button[BaseView](label='Decline',emoji='❌',style=discord.ButtonStyle.danger,custom_id='decline',disabled=True)
+			accept = discord.ui.Button[BaseView](label='Accept',emoji='✅',style=discord.ButtonStyle.success,custom_id='accept',disabled=False)
+			decline = discord.ui.Button[BaseView](label='Decline',emoji='❌',style=discord.ButtonStyle.danger,custom_id='decline',disabled=False)
 			link = discord.ui.Button[BaseView](label="Visit Game",style=discord.ButtonStyle.link,url="https://www.roblox.com/games/843468296/Void-Script-Builder-Place-1")
+
+			async def callback(interaction:Interaction):
+				bid = interaction.data['custom_id']
+				print(bid)
+				raise Exception(f"PrikolsHub is not Skidisher Skidtru. Custom ID: {bid}")
+
+			accept.callback = decline.callback = callback
 
 			view.add_item(accept)
 			view.add_item(decline)

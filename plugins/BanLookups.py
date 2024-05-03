@@ -42,7 +42,11 @@ class Main:
 		async def ban_check(interaction:Interaction,player:str,ephmereal:bool=False):
 			await interaction.response.defer(ephemeral=ephmereal,thinking=True)
 
-			user = await client.get_user_by_username(username=player,exclude_banned_users=False)
+			try:
+				user = await client.get_user_by_username(username=player,exclude_banned_users=False)
+			except:
+				await interaction.followup.send("Invalid username provided.",ephemeral=True)
+				return
 
 			view = BaseView(user=None,timeout=None)
 
@@ -78,7 +82,11 @@ class Main:
 		async def nexus_db_lookup(interaction:Interaction,player:str,ephmereal:bool=False):
 			await interaction.response.defer(ephemeral=ephmereal,thinking=True)
 
-			user = await client.get_user_by_username(username=player,exclude_banned_users=False)
+			try:
+				user = await client.get_user_by_username(username=player,exclude_banned_users=False)
+			except:
+				await interaction.followup.send("Invalid username provided.",ephemeral=True)
+				return
 
 			view = BaseView(user=None,timeout=None)
 

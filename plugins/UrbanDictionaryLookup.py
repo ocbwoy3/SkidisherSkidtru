@@ -37,6 +37,7 @@ class Main:
 
 			if len(definitions) == 0:
 				await interaction.followup.send("No results found.")
+				return
 
 			def reduce_func(x,y):
 				if x.get('thumbs_up') > y.get('thumbs_up'):

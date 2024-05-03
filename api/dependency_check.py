@@ -38,14 +38,18 @@ def dependency_check_auto():
 	"""
 	Main function for Skidisher Skidtru to check dependencies.
 	"""
-	install_package_if_not_present("discord")
+
+	# https://www.squash.io/how-to-pip-install-from-a-git-repo-branch/
 	if check_discordpy_userapps() == False:
 		print(f"Skidisher Skidtru requires the feature/user_apps branch of discord.py",namespace="SkidisherSkidtru")
-		print(f"Download the feature/user_apps branch of discord.py from GitHub, and put it in your site_packages folder.",namespace="SkidisherSkidtru")
-		print("https://github.com/rapptz/discord.py/tree/feature/user_apps",namespace="SkidisherSkidtru")
-		exit(1)
+		print(f"Uninstalling discord.py if present, then installing from git branch.",namespace="SkidisherSkidtru")
+		#print("https://github.com/rapptz/discord.py/tree/feature/user_apps",namespace="SkidisherSkidtru")
+		os.system(f"{sys.executable} -m pip uninstall discord")
+		install_package_if_not_present("git+https://github.com/rapptz/discord.py@feature/user_apps",'discord')
+		#exit(1)
 	else:
 		print("Discord package supports user apps")
+	install_package_if_not_present("git+https://github.com/rapptz/discord.py@feature/user_apps",'discord')
 	install_package_if_not_present("python-dotenv","dotenv")
 	install_package_if_not_present("cfscrape")
 	install_package_if_not_present("distro")

@@ -2,11 +2,14 @@
 
 Discord user app, written by OCbwoy3!
 
-Requires the `feature/user_apps` branch of [`discord.py`](https://github.com/Rapptz/discord.py/tree/feature/user_apps "feature/user_apps"), `uwuipy`, `cfscrape`, `requests`, and idk what more.
+This is Open Source, so you can make your own version of it, but please give credit.
 
-If you're not planning to run your own PrikolsHub (or a remake of it), feel free to delete `SecLoad.py`, the PrikolsHub `CommandGroup` and `SECLOAD_API_KEY`. Also make sure to update `main.py`.
+If you're not planning to run your own PrikolsHub (or a remake/clone of it), feel free to delete `SecLoad.py`, the PrikolsHub `CommandGroup` and `SECLOAD_API_KEY`. Also make sure to update `main.py`.
 
-Also, there is a music sharing command. Self explanatory, shows you a embed of what you're listening to. Please rename `ocbwoy3` in `registrate.py` to something else to not do confusion!!!
+Also, there is a music sharing command. Self explanatory, shows you a embed of what you're listening to. Please rename `ocbwoy3` in `registrate.py` to something else to not do confusion.
+
+> [!WARNING]
+> Abusing PrikolsHub's, SecLoad's and Nexus's API will in most cases result a blacklist.
 
 ## Enviorment files
 
@@ -16,7 +19,7 @@ WHITELIST = [
 	# Put in Discord User IDs of the people who should get whitelist.
 ]
 
-SECLOAD_API_KEY = "" # unused rn idk
+SECLOAD_API_KEY = ""
 # Get your key here: https://secload.scriptlang.com/docs
 ```
 

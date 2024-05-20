@@ -1,6 +1,6 @@
 import sys, os
 
-TERM_ACCEPT_FILENAME = ".skidisherskidtru-accept-terms"
+TERM_ACCEPT_FILENAME = ".skidisherskidtru_accept_terms"
 old_printfunc = print
 
 def print(*args,namespace:str="SkidisherSkidtru",**kwargs):
@@ -9,14 +9,15 @@ def print(*args,namespace:str="SkidisherSkidtru",**kwargs):
 def ask_for_terms():
 	print("Acceptance of terms is required in order to continue.")
 	old_printfunc(f"""
-Nexus's, SecLoad's and PrikolsHub's APIs use is governed by their respective terms.
+Usage of Nexus's, SecLoad's and PrikolsHub's APIs are governed by their respective terms.
 Abuse of API might result in your IP address being blacklisted, which might limit the functionality of Skidisher Skidtru.
 
-Here is a summarized list of API policies. May not be full version and such, but you get the point.
+You get the point.
 
 Nexus:
 	Do not spam requests
-	Do not use Roblox-Only endpoints at all
+	Do not use Roblox-Only endpoints at all (Instant Ban)
+	Proxies and VPNs are banned
 
 SecLoad:
 	Do not spam requests
@@ -28,7 +29,7 @@ PrikolsHub:
 	Do not use library, session and session request endpoints
 """)
 	try:
-		res = input("Do you accept these terms? [y/N]: ").lower()
+		res = input("Do you agree to these terms? [y/N]: ").lower()
 		if res[0:1] == 'y':
 			return True
 		else:
@@ -44,11 +45,12 @@ def check_terms():
 		pass
 	accepted = ask_for_terms()
 	if accepted == True:
+		print(f"Writing to file: {TERM_ACCEPT_FILENAME}")
 		try:
 			with open(TERM_ACCEPT_FILENAME,'w') as file:
 				file.write('True')
 				file.close()
-				print("Terms were accepted")
+				print("Success!")
 		except Exception as ex:
 			print(f"Failed to write to term acceptance file. {ex}")
 			exit(1)

@@ -33,10 +33,14 @@ async def on_view_error(self, interaction: discord.Interaction, error: Exception
 > Python Executable: `{sys.executable}`
 > Process PID: {os.getpid()}"""
 	message = f"""# Skidisher Skidtru has encountered an Exception.
-If this occours again, please create an [issue](<https://github.com/ocbwoy3/SkidisherSkidtru/issues>).
+{
+		interaction.client.user.id == 1220838242270580737 and
+		"If this occours again, please create an [issue](<https://github.com/ocbwoy3/SkidisherSkidtru/issues>)."
+		or "This is a fork of Skidisher Skidtru, do not report this to the developers."
+}
 {
 	check_failture == True and
-	':warning: This is a Check Failture, most likely intentional, or undocumented.' or ''
+	':warning: This is a Check Failture, most likely intentional, or undocumented. Do not report this.' or ''
 }
 **View Interaction**
 > ID: {interaction.id}
@@ -109,10 +113,14 @@ def setup_errorhandlers(tree: CommandTree):
 > Python Executable: `{sys.executable}`
 > Process PID: {os.getpid()}"""
 			message = f"""# Skidisher Skidtru has encountered an Exception.
-If this occours again, please create an [issue](<https://github.com/ocbwoy3/SkidisherSkidtru/issues>).
+{
+		interaction.client.user.id == 1220838242270580737 and
+		"If this occours again, please create an [issue](<https://github.com/ocbwoy3/SkidisherSkidtru/issues>)."
+		or "This is a fork of Skidisher Skidtru, do not report this to the developers."
+}
 {
 	check_failture == True and
-	':warning: This is a Check Failture, most likely intentional, or undocumented.' or ''
+	':warning: This is a Check Failture, most likely intentional, or undocumented. Do not report this.' or ''
 }
 **Slash Command Interaction**
 > ID: {interaction.id}

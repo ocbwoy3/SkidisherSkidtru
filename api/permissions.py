@@ -13,3 +13,10 @@ def is_whitelisted(interaction: discord.Interaction):
 	if interaction.user.id in WHITELIST:
 		return True
 	raise RuntimeError("wl only")
+
+def ai_access(interaction: discord.Interaction):
+	if interaction.user.id == 486147449703104523:
+		return True
+	if interaction.user.id in config.AI_ACCESS:
+		return True
+	raise RuntimeError("ai access only")

@@ -18,9 +18,12 @@ Also, there is a music sharing command. Self explanatory, shows you a embed of w
 WHITELIST = [
 	# Put in Discord User IDs of the people who should get whitelist.
 ]
+AI_ACCESS = [
+	# UserIDs who should access AI features
+]
 
-SECLOAD_API_KEY = ""
-# Get your key here: https://secload.scriptlang.com/docs
+SECLOAD_API_KEY = "" # https://secload.scriptlang.com/docs leave this blank to disable
+GROQ_API_KEY = "" # https://console.groq.com/keys leave this blank to disable
 ```
 
 `.env`

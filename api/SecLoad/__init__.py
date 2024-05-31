@@ -2,14 +2,14 @@
 SecLoad API implementation for Skidisher Skidtru.
 """
 
-import cfscrape, functools, asyncio
+import requests_html, functools, asyncio
 from requests import Response
 
 from .exceptions import *
 
 import json
 
-ROOT_URL = "https://secload.scriptlang.com"
+ROOT_URL = "https://secload.ocbwoy3.dev"
 
 P_APIRoot = ROOT_URL + "/secload/publicapi"
 
@@ -18,7 +18,7 @@ async def cfget(*args, **kwargs) -> Response:
 	Async function to get data with Cloudflare bypass.
 	"""
 	# print(args,kwargs)
-	scraper = cfscrape.create_scraper()
+	scraper = requests_html.HTMLSession() # cfscrape.create_scraper()
 	realfunc = functools.partial(scraper.get, *args, **kwargs)
 	loop = asyncio.get_running_loop()
 	response = await loop.run_in_executor(None,realfunc)
@@ -30,7 +30,7 @@ async def cfpost(*args, **kwargs) -> Response:
 	Async function to post data with Cloudflare bypass.
 	"""
 	# print(args,kwargs)
-	scraper = cfscrape.create_scraper()
+	scraper = requests_html.HTMLSession() # cfscrape.create_scraper()
 	realfunc = functools.partial(scraper.post, *args, **kwargs)
 	loop = asyncio.get_running_loop()
 	response = await loop.run_in_executor(None,realfunc)

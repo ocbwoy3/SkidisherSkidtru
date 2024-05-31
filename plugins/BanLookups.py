@@ -53,15 +53,19 @@ class Main:
 			link = discord.ui.Button[BaseView](label="View User",style=discord.ButtonStyle.link,url=f"https://roblox.com/users/{user.id}")
 			view.add_item(link)
 
-			b_112 = (await get("https://lietuva.scriptlang.com/banland.json")).json()
-			b_nexus = (await get("https://nexus.scriptlang.com/bans")).json()
+			b_112 = (await get("https://api.ocbwoy3.dev/banland.json")).json()
+			b_nexus = (await get("https://nexus.ocbwoy3.dev/bans")).json()
 
 			embed = discord.Embed(colour=discord.Colour.green(),title=f"{user.display_name or user.name} (@{user.name})",description="",url=f"https://roblox.com/users/{user.id}")
 
 			isBanned = False
 			if b_112.get(f'{user.id}',None) != None:
 				isBanned = True
-				embed.add_field(name="112 (PrikolsHub):",value = b_112.get(f'{user.id}','skidisher skidtru dummy ban reason'),inline=False)
+				val = b_112.get(f'{user.id}','skidisher skidtru dummy ban reason')
+				try:
+					embed.add_field(name="112 (PrikolsHub):",value=f"{val['Reason']}\n**Moderator:** <@{val['ModeratorID']}>{val['Expiry'] != 0 and f'\nUnbanned on <t:{val['Expiry']}> (<t:{val['Expiry']}:R>)' or ''}",inline=False)
+				except:
+					pass
 			if b_nexus.get(f'{user.id}',None) != None:
 				isBanned = True
 				embed.add_field(name="Nexus:",value = b_nexus.get(f'{user.id}').get('reason','skidisher skidtru dummy ban reason'),inline=False)
@@ -93,8 +97,8 @@ class Main:
 			link = discord.ui.Button[BaseView](label="View User",style=discord.ButtonStyle.link,url=f"https://roblox.com/users/{user.id}")
 			view.add_item(link)
 
-			b_wl = (await get("https://nexus.scriptlang.com/whitelist")).json()
-			b_bl = (await get("https://nexus.scriptlang.com/bans")).json()
+			b_wl = (await get("https://nexus.ocbwoy3.dev/whitelist")).json()
+			b_bl = (await get("https://nexus.ocbwoy3.dev/bans")).json()
 
 			embed = discord.Embed(colour=discord.Colour.green(),title=f"{user.display_name or user.name} (@{user.name})",description="",url=f"https://roblox.com/users/{user.id}")
 
@@ -120,7 +124,7 @@ class Main:
 
 			view = BaseView(user=None,timeout=None)
 
-			b_wl = (await get("https://nexus.scriptlang.com/whitelist")).json()
+			b_wl = (await get("https://nexus.ocbwoy3.dev/whitelist")).json()
 
 			embed = discord.Embed(colour=discord.Colour.green(),title=f"{user.display_name}",description="",url=f"https://roblox.com/users/{user.id}")
 

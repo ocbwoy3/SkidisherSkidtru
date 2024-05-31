@@ -75,10 +75,10 @@ def setup_errorhandlers(tree: CommandTree):
 			return
 		elif 'ocbwoy3 only' in str(error):
 			try:
-				await interaction.response.send_message("You are not OCbwoy3!",ephemeral=True)
+				await interaction.response.send_message("You are not the owner.",ephemeral=True)
 			except Exception as ex:
 				try:
-					await interaction.followup.send("You are not OCbwoy3!",ephemeral=True)
+					await interaction.followup.send("You are not the owner.",ephemeral=True)
 				except:
 					pass
 			return
@@ -88,6 +88,15 @@ def setup_errorhandlers(tree: CommandTree):
 			except Exception as ex:
 				try:
 					await interaction.followup.send("You are not whitelisted!",ephemeral=True)
+				except:
+					pass
+			return
+		elif 'ai access only' in str(error):
+			try:
+				await interaction.response.send_message("You need AI access to run this!",ephemeral=True)
+			except Exception as ex:
+				try:
+					await interaction.followup.send("You need AI access to run this!",ephemeral=True)
 				except:
 					pass
 			return

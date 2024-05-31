@@ -23,7 +23,7 @@ from api.SecLoad import SecLoad
 
 class Main:
 	def __init__(self, registrate:CommandRegistrate):
-		if conf.SECLOAD_API_KEY != "EXAMPLE.KEY":
+		if conf.SECLOAD_API_KEY != "":
 
 			sl = SecLoad(conf.SECLOAD_API_KEY)
 			script = sl.GetScript("prikolshub")

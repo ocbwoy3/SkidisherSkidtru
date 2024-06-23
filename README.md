@@ -9,7 +9,7 @@ If you're not planning to run your own PrikolsHub (or a remake/clone of it), fee
 Also, there is a music sharing command. Self explanatory, shows you a embed of what you're listening to. Please rename `ocbwoy3` in `registrate.py` to something else to not do confusion.
 
 > [!WARNING]
-> Abusing PrikolsHub's, SecLoad's and Nexus's API will in most cases result a blacklist.
+> Abusing PrikolsHub's, SecLoad's and Karma's API will in most cases result a blacklist.
 
 ## Enviorment files
 

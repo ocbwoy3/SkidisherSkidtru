@@ -42,7 +42,7 @@ async def on_ready():
 	tree.add_command(registrate.fun)
 	tree.add_command(registrate.misc)
 	tree.add_command(registrate.ocbwoy3)
-	tree.add_command(registrate.nexus)
+	# tree.add_command(registrate.nexus)
 	print("Syncing Command Tree")
 	await tree.sync()
 	print("Skidisher Skidtru has successfully loaded!")
@@ -59,16 +59,21 @@ def run_skidisherskidtru():
 <b>Written by \033]8;;https://twitter.com/ocbwoy3\033\\OCbwoy3\033]8;;\033\\ and contributors<x>
 """.replace('<r>','\x1B[1;31m').replace('<y>','\033[1;33m').replace('<x>','\033[0m').replace('<b>','\033[34m'))
 	
-	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services like SecLoad and Nexus\'s Manager. For more info, please run the about command.')
+	print('Skidisher Skidtru uses PrikolsHub\'s APIs and APIs of other services like SecLoad and Karma.')
+	print('For more info, please run the about command.')
 	
 	import api.util as util
 
 	util.check_terms()	
 	
-	print("Logging into Discord")
+	import logging
+
+	dform = logging.Formatter("\033[2;34m\033[1;34m[Discord]\033[0m\033[2;34m\033[0m {message}",style='{')
+
+	print("Starting bot...")
 
 	try:
-		bot.run(os.getenv('DISCORD_TOKEN'))
+		bot.run(os.getenv('DISCORD_TOKEN'),log_formatter=dform)
 	except discord.errors.PrivilegedIntentsRequired:
 		print("Skidisher Skidtru cannot access privileged intents required.")
 		print("Please visit the Discord developer portal and enable privileged intents.")

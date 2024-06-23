@@ -28,7 +28,7 @@ Skidisher Skidtru is a super cool Discord user app written in Python, that anyon
 **Acknowledgements**
 > [Skidisher Skidtru]( <https://github.com/ocbwoy3/SkidisherSkidtru> ) - MIT
 > [SecLoad]( <https://secload.scriptlang.com> ) - MIT
-> [Nexus' Manager]( <https://nexus.scriptlang.com> ) - Proprietary
+> [Karma]( <https://karma.doqe.dev> ) - Proprietary
 > [PrikolsHub]( <https://discord.gg/F8GwJBVVMU> ) - Proprietary
 
 **Open Source Licenses**
@@ -38,6 +38,7 @@ Skidisher Skidtru is a super cool Discord user app written in Python, that anyon
 > [uwuipy]( <https://github.com/Cuprum77/uwuipy> ) - MIT
 > [requests]( <https://github.com/psf/requests> ) - Apache 2.0
 > [cfscrape]( <https://github.com/Anorov/cloudflare-scrape> ) - MIT
-> [pylast]( <https://github.com/pylast/pylast> ) - Apache 2.0""",ephemeral=ephmereal)
+> [pylast]( <https://github.com/pylast/pylast> ) - Apache 2.0
+> [groq]( <https://github.com/groq/groq-python> ) - Apache 2.0""",ephemeral=ephmereal)
 				
 		registrate.misc.add_command(SkidisherSkidtru_Command)

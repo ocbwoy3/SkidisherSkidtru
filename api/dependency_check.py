@@ -37,9 +37,10 @@ def dependency_check_auto():
 
 	install_package_if_not_present("discord","discord") # discord.py PR #9760 got merged
 	install_package_if_not_present("python-dotenv","dotenv")
-	install_package_if_not_present("requests_html")
+	install_package_if_not_present("groq")
 	install_package_if_not_present("distro")
 	install_package_if_not_present("roblox")
 	install_package_if_not_present("uwuipy") # the uwuifier library
 	install_package_if_not_present("requests")
 	install_package_if_not_present("pylast")
+	

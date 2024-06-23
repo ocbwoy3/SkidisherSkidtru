@@ -9,12 +9,12 @@ def print(*args,namespace:str="SkidisherSkidtru",**kwargs):
 def ask_for_terms():
 	print("Acceptance of terms is required in order to continue.")
 	old_printfunc(f"""
-Usage of Nexus's, SecLoad's and PrikolsHub's APIs are governed by their respective terms.
+Usage of Karma's, SecLoad's and PrikolsHub's APIs are governed by their respective terms.
 Abuse of API might result in your IP address being blacklisted, which might limit the functionality of Skidisher Skidtru.
 
 You get the point.
 
-Nexus:
+Karma:
 	Do not spam requests
 	Do not use Roblox-Only endpoints at all (Instant Ban)
 	Proxies and VPNs are banned

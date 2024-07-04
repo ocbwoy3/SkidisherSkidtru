@@ -57,7 +57,7 @@ class Main:
 					ephemeral = True
 
 				await interaction.response.defer(thinking=True,ephemeral=ephemeral)
-				prompt = prompt[:200]
+				prompt = prompt[:8192]
 
 				if is_tos_accepted == False:
 					view = BaseView(user=interaction.user,timeout=120)

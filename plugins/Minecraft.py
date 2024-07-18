@@ -28,7 +28,7 @@ class Main:
 
 		@app_commands.command(name='start',description='Start the server.')
 		@app_commands.check(perms.is_ocbwoy3)
-		async def start(interaction:Interaction,command:str):
+		async def start(interaction:Interaction):
 			await interaction.response.defer(ephemeral=False,thinking=True)
 			res = client.start(os.getenv('SERVER_ID'))
 			await interaction.followup.send(f"Response from Exaroton API: `{res}`",ephemeral=False)

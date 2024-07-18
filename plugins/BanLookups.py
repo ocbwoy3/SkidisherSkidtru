@@ -75,10 +75,12 @@ class Main:
 					isBanned = True
 					embed.add_field(name="Karma:",value = b_nexus.get(f'{user.id}').get('reason','skidisher skidtru dummy ban reason'),inline=False)
 			except:
-				embed.add_field(name="112 (PrikolsHub):",value=f"[SkidisherSkidtru]: Failed to Fetch!",inline=False)
+				embed.add_field(name="Karma:",value=f"[SkidisherSkidtru]: Failed to Fetch!",inline=False)
 
 			if isBanned == False:
 				embed.description = 'This user is not banned.'
+
+			embed.description = "This command has been deprecated! Please use [ocbwoy3.dev](<https://ocbwoy3.dev>) for ban lookups instead. "+embed.description
 
 			view.message = await interaction.followup.send(view=view,embed=embed)
 

@@ -13,7 +13,7 @@ __author__ = "OCbwoy3"
 
 # ez cloudflare bypass
 
-import cfscrape, functools, asyncio
+import functools, asyncio
 from requests import Response
 
 SCRIPT_EXP = 5

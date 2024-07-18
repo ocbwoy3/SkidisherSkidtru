@@ -33,9 +33,11 @@ def install_package_if_not_present(package_name:str,import_name:str=None,flags="
 def dependency_check_auto():
 	"""
 	Main function for Skidisher Skidtru to check dependencies.
+	(May not work on Arch if not using a venv)
+
 	"""
 
-	install_package_if_not_present("discord","discord") # discord.py PR #9760 got merged
+	install_package_if_not_present("discord","discord") # PR #9760 got merged
 	install_package_if_not_present("python-dotenv","dotenv")
 	install_package_if_not_present("groq")
 	install_package_if_not_present("distro")
@@ -43,4 +45,5 @@ def dependency_check_auto():
 	install_package_if_not_present("uwuipy") # the uwuifier library
 	install_package_if_not_present("requests")
 	install_package_if_not_present("pylast")
+	install_package_if_not_present("exaroton")
 	

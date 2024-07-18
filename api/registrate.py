@@ -13,6 +13,6 @@ class CommandRegistrate:
 	fun = app_commands.Group(name='fun',description='Fun Commands',allowed_contexts=ct,allowed_installs=ins)
 	misc = app_commands.Group(name='misc',description='Extra Commands',allowed_contexts=ct,allowed_installs=ins)
 	ocbwoy3 = app_commands.Group(name='ocbwoy3',description='Spy on OCbwoy3',allowed_contexts=ct,allowed_installs=ins)
-	# nexus = app_commands.Group(name='nexus',description='Nexus lookup commands',allowed_contexts=ct,allowed_installs=ins)
 	prikolshub = app_commands.Group(name='prikolshub',description='Fun',allowed_contexts=ct,allowed_installs=ins)
+	mc = app_commands.Group(name='mc',description='Manage a Minecraft Server',allowed_contexts=ct,allowed_installs=ins)
 

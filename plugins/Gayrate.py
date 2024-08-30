@@ -50,6 +50,6 @@ class Main:
 		async def mp(interaction:Interaction,user:discord.User,gs:int):
 			global CACHE
 			CACHE[user.id]=gs
-			await interaction.response.send(f"manipulated gs CACHE[{user.id}] = {gs}")
+			await interaction.response.reply(f"manipulated gs CACHE[{user.id}] = {gs}")
 		
 		registrate.fun.add_command(mp)

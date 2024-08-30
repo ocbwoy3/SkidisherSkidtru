@@ -47,7 +47,7 @@ class Main:
 		@app_commands.command(name='gayrate_cacheset',description='copy of heist\'s gayrate')
 		@app_commands.check(perms.is_ocbwoy3)
 		@app_commands.describe(user='gayrate user',gs='int')
-		async def manip(interaction:Interaction,user:discord.User,gs:int):
+		async def mp(interaction:Interaction,user:discord.User,gs:int):
 			global CACHE
 			CACHE[user.id]=gs
 			await interaction.response.send(f"manipulated gs CACHE[{user.id}] = {gs}")

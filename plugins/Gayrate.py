@@ -44,12 +44,12 @@ class Main:
 				
 		registrate.fun.add_command(gayrate)
 		
-		@app_commands.command(name='gayrate_manipulate',description='copy of heist\'s gayrate')
-		@app_commands.check(perms.is_owner)
+		@app_commands.command(name='gayrate_cacheset',description='copy of heist\'s gayrate')
+		@app_commands.check(perms.is_ocbwoy3)
 		@app_commands.describe(user='gayrate user',gs='int')
 		async def manip(interaction:Interaction,user:discord.User,gs:int):
 			global CACHE
 			CACHE[user.id]=gs
 			await interaction.response.send(f"manipulated gs CACHE[{user.id}] = {gs}")
 		
-		registrate.fun.add_command(manip)
+		registrate.fun.add_command(mp)

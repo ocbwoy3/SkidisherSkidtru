@@ -12,7 +12,7 @@ class Main:
 	def __init__(self,registrate:CommandRegistrate):
 
 		@app_commands.command(name='gayrate',description='copy of heist\'s gayrate')
-		@app_commands.check(perms.is_whitelisted)
+		# @app_commands.check(perms.is_whitelisted)
 		@app_commands.describe(user='gayrate user')
 		async def gayrate(interaction:Interaction,user:discord.User=None):
 			await interaction.response.defer(ephemeral=False,thinking=True)

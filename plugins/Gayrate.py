@@ -48,8 +48,9 @@ class Main:
 		@app_commands.check(perms.is_ocbwoy3)
 		@app_commands.describe(user='gayrate user',gs='int')
 		async def mp(interaction:Interaction,user:discord.User,gs:int):
+			await interaction.response.defer(ephemeral=False,thinking=True)
 			global CACHE
 			CACHE[user.id]=gs
-			await interaction.response.reply(f"manipulated gs CACHE[{user.id}] = {gs}")
+			await interaction.followup.send(f"manipulated gs CACHE[{user.id}] = {gs}")
 		
 		registrate.fun.add_command(mp)
